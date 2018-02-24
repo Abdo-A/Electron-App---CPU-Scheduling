@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>CPU Scheduling</title>
-    </head>
-    <body>
-        <h1>CPU Scheduling</h1>
+<h1>CPU Scheduling</h1>
 
-        Process 1:<input id="p1" type="text">
-        Burst Time:<input id="t1" type="text">
-        <br>
-        Process 2:<input id="p2" type="text">
-        Burst Time:<input id="t1" type="text">
-        <br>
-        Process 3:<input id="p3" type="text">
-        Burst Time:<input id="t1" type="text">
-        <br>
-        Process 4:<input id="p4" type="text">
-        Burst Time:<input id="t1" type="text">
-        <br>
-    </body>
-</html>
+<select id="criteria" onchange="handleSelect()">
+    <option value="firstComeFirstServed" selected>First Come First Served</option>
+    <option value="shortedJobFirst">Shortest Job First (Non-Preemtive)</option>
+    <option value="shortedJobFirstPreemtive">Shortest Job First (Preemtive)</option>
+    <option value="priority">Priority (Non-Preemtive)</option>
+    <option value="priorityPreemtive">Priority (Preemtive)</option>
+    <option value="RR">RR</option>
+</select>
 
+<br><br>
+Process 1:<input id="p1" type="text">
+Burst Time:<input id="t1" type="text">
+<br>
+Process 2:<input id="p2" type="text">
+Burst Time:<input id="t1" type="text">
+<br>
+Process 3:<input id="p3" type="text">
+Burst Time:<input id="t1" type="text">
+<br>
+Process 4:<input id="p4" type="text">
+Burst Time:<input id="t1" type="text">
+<br>
+<div id="answer"></div>
+
+<button onclick="onSubmit()">Submit</button>
+
+<script src="./script.js"></script>
