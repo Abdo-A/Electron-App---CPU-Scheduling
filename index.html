@@ -1,29 +1,31 @@
-<h1>CPU Scheduling</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OS</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
 
-<select id="criteria" onchange="handleSelect()">
-    <option value="firstComeFirstServed" selected>First Come First Served</option>
-    <option value="shortedJobFirst">Shortest Job First (Non-Preemtive)</option>
-    <option value="shortedJobFirstPreemtive">Shortest Job First (Preemtive)</option>
-    <option value="priority">Priority (Non-Preemtive)</option>
-    <option value="priorityPreemtive">Priority (Preemtive)</option>
-    <option value="RR">RR</option>
-</select>
+    <body>
+        <h1>CPU Scheduling</h1>
+        Number of processes:
+        <input id="numberOfProcesses" type="text"/>
+        <select id="criteria">
+            <option value="firstComeFirstServed" selected>First Come First Served</option>
+            <option value="shortedJobFirst">Shortest Job First (Non-Preemtive)</option>
+            <option value="shortedJobFirstPreemtive">Shortest Job First (Preemtive)</option>
+            <option value="priority">Priority (Non-Preemtive)</option>
+            <option value="priorityPreemtive">Priority (Preemtive)</option>
+            <option value="RR">RR</option>
+        </select>
+        <button onclick="onProceed()">Proceed</button><br><br><br>
 
-<br><br>
-Process 1:<input id="p1" type="text">
-Burst Time:<input id="t1" type="text">
-<br>
-Process 2:<input id="p2" type="text">
-Burst Time:<input id="t1" type="text">
-<br>
-Process 3:<input id="p3" type="text">
-Burst Time:<input id="t1" type="text">
-<br>
-Process 4:<input id="p4" type="text">
-Burst Time:<input id="t1" type="text">
-<br>
-<div id="answer"></div>
+        <br><br>
+ 
+        <div id="answer"></div>
 
-<button onclick="onSubmit()">Submit</button>
+        <button onclick="onSubmit()">Submit</button>
 
-<script src="./script.js"></script>
+        <script type="text/javascript" src="processDef.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
