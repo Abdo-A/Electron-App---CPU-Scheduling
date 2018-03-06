@@ -15,16 +15,26 @@ function onProceed(){
 }
 
 function onSubmit(){
+    p=[];
     for(let i=1;i<=numberOfProcesses.value;i++){
         //declaring the dynamic named variables
         window[`name${i}`]=document.getElementById(`name${i}`).value;
-        window[`burstTime${i}`]=document.getElementById(`burstTime${i}`).value;
-        window[`arrivalTime${i}`]=document.getElementById(`arrivalTime${i}`).value;
+        window[`burstTime${i}`]=Number(document.getElementById(`burstTime${i}`).value);
+        window[`arrivalTime${i}`]=Number(document.getElementById(`arrivalTime${i}`).value);
 
         //each array element is a Process object
         p[i]=new Process(window[`name${i}`],window[`burstTime${i}`],window[`arrivalTime${i}`]);
-        console.log(window[`p${i}`]);
     }
+
+    p.sort((a,b)=>{
+        if(a.arrivalTime!=b.arrivalTime){
+            return a.arrivalTime-b.arrivalTime;
+        }
+        else return b.burstTime-a.burstTime;
+        });
+    //now, p that will be dealt with by the criteria functions is sorted:
+    //lower arrivalTime first
+    //then higher burstTime first
 
     if(criteria.value==='firstComeFirstServed'){
         firstComeFirstServed();
@@ -43,45 +53,63 @@ function onSubmit(){
 
 function firstComeFirstServed(){
     body.style.backgroundColor="red";
-    let totalBurstTime=0, counter=0;
-    
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        totalBurstTime+=Number(p[i].burstTime);
+    let averageWaitingTime=0,averageTurnAroundtime=0;
+
+    p[0].waitingTime=0;
+    p[0].turnAroundTime=p[0].burstTime;
+    p[0].absoluteTime=p[0].arrivalTime+p[0].burstTime;
+
+    for(let i=1;i<numberOfProcesses.value;i++){
+        p[i].absoluteTime=p[i-1].absoluteTime+p[i].burstTime;
+        p[i].turnAroundTime=p[i].absoluteTime-p[i].arrivalTime;
+        p[i].waitingTime=p[i].turnAroundTime-p[i].burstTime;
     }
-    console.log(totalBurstTime);
+
+    for(let i=0;i<numberOfProcesses.value;i++){
+        averageWaitingTime=averageWaitingTime+p[i].waitingTime;
+        averageTurnAroundtime=averageTurnAroundtime+p[i].turnAroundTime;
+    }
+
+    for(let i=0;i<numberOfProcesses.value;i++){
+        console.log(p[i]);
+    }
+    console.log('averageWaitingTime',averageWaitingTime);
+    console.log('averageTurnAroundtime',averageTurnAroundtime);
 }
+
+
 
 function shortedJobFirst(){
     body.style.backgroundColor="green";
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        
+    for(let i=0;i<numberOfProcesses.value;i++){
+        console.log(p[i]);
     }
 }
 
 function shortedJobFirstPreemtive(){
     body.style.backgroundColor="blue";
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        
+    for(let i=0;i<numberOfProcesses.value;i++){
+        console.log(p[i]);
     }
 }
 
 function priority(){
     body.style.backgroundColor="brown";
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        
+    for(let i=0;i<numberOfProcesses.value;i++){
+        console.log(p[i]);
     }
 }
 
 function priorityPreemtive(){
     body.style.backgroundColor="black";
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        
+    for(let i=0;i<numberOfProcesses.value;i++){
+        console.log(p[i]);
     }
 }
 
 function RR(){
     body.style.backgroundColor="yellow";
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        
+    for(let i=0;i<numberOfProcesses.value;i++){
+        console.log(p[i]);
     }
 }
