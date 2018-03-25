@@ -1,4 +1,6 @@
-function finalize(p=[]){
+function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
+    averageWaitingTime=0;
+    averageTurnAroundtime=0;
     for(let i=0;i<numberOfProcesses.value;i++){
         p[i].turnAroundTime=p[i].finishAt-p[i].arrivalTime;
         p[i].waitingTime=p[i].turnAroundTime-p[i].burstTime;
@@ -9,6 +11,17 @@ function finalize(p=[]){
 
     averageWaitingTime=averageWaitingTime/numberOfProcesses.value;
     averageTurnAroundtime=averageTurnAroundtime/numberOfProcesses.value;
+
+    if(!executionQueueNames){
+        for(let i=0;i<numberOfProcesses.value;i++){
+            executionQueueNames+=p[i].name+' ';
+        }
+    }
+    if(!executionQueueDurations){
+        for(let i=0;i<numberOfProcesses.value;i++){
+            executionQueueDurations+=(p[i].burstTime).toString()+' ';
+        }
+    }
 
     //now, we have all processes set, and also averageWaitingTime, averageTurnAroundtime, let's draw
     pInOrder=p;
@@ -30,7 +43,14 @@ function finalize(p=[]){
     answerArea.innerHTML+=`
         Average Waiting Time : ${averageWaitingTime}
         <br/> Average Turnaround Time : ${averageTurnAroundtime}
+        <br/> life${executionQueueNames}
+        <br/> life${executionQueueDurations}
     `;
     console.log('averageWaitingTime',averageWaitingTime);
     console.log('averageTurnAroundtime',averageTurnAroundtime);
+
+    console.log(executionQueueNames);
+    console.log(executionQueueDurations);
+
+    //draw(p,executionQueueNames,executionQueueDurations);
 }
