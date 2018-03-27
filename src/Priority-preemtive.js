@@ -15,7 +15,12 @@ function priorityPreemtive(){
     for(i=0;;i++){
         if (completed>=numberOfProcesses.value){
             executionQueueNames+=oldCurrentProcess.name+' ';
-            executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+            //
+            if(clock-clockAtStart>oldCurrentProcess.burstTime)
+                    executionQueueDurations+=(oldCurrentProcess.burstTime).toString()+' ';
+            else
+                executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+            //
             break;
         }
 
@@ -44,7 +49,12 @@ function priorityPreemtive(){
                 //console.log('I GOT INTO FIRST IF');
                 //oldCurrentProcess.passedBurstTime+=clock-clockAtStart;
                 executionQueueNames+=oldCurrentProcess.name+' ';
-                executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+                //
+                if(clock-clockAtStart>oldCurrentProcess.burstTime)
+                    executionQueueDurations+=(oldCurrentProcess.burstTime).toString()+' ';
+                else
+                    executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+                //
                 clockAtStart=clock;
             }
 
@@ -68,9 +78,9 @@ function priorityPreemtive(){
             if(p[i].name===currentProcess.name){
                 p[i]=currentProcess;
             }
-            // if(p[i].name===oldCurrentProcess.name){
-            //     p[i]=oldCurrentProcess;
-            // }
+            if(p[i].name===oldCurrentProcess.name){
+                p[i]=oldCurrentProcess;
+            }
         }
 
 

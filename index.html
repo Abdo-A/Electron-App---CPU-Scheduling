@@ -6,29 +6,35 @@
     </head>
 
     <body>
-        <h1>CPU Scheduling</h1>
-        Number of processes:
-        <input id="numberOfProcesses" type="text"/>
-        <select id="criteria">
-            <option value="firstComeFirstServed" selected>First Come First Served</option>
-            <option value="shortedJobFirst">Shortest Job First (Non-Preemtive)</option>
-            <option value="shortedJobFirstPreemtive">Shortest Job First (Preemtive)</option>
-            <option value="priority">Priority (Non-Preemtive)</option>
-            <option value="priorityPreemtive">Priority (Preemtive)</option>
-            <option value="RR">RR</option>
-        </select>
-        <button onclick="onProceed()">Proceed</button><br><br><br>
+        <div id="notAnswer">
+            <h1 id="header">CPU Scheduling Simulator</h1>
 
-        <br><br>
- 
-        <div id="inputsArea"></div>
+            <input placeholder="Number Of Processes" id="numberOfProcesses" type="text" onkeyup="handleKeyUp()"/>
+            <select id="criteria">
+                <option value="firstComeFirstServed" selected>First Come First Served</option>
+                <option value="shortedJobFirst">Shortest Job First (Non-Preemtive)</option>
+                <option value="shortedJobFirstPreemtive">Shortest Job First (Preemtive)</option>
+                <option value="priority">Priority (Non-Preemtive)</option>
+                <option value="priorityPreemtive">Priority (Preemtive)</option>
+                <option value="RR">RR</option>
+            </select>
+            <br />
+            <button id="proceedButton" onclick="onProceed()">Proceed</button><br><br><br>
 
-        <button onclick="onSubmit()">Submit</button>
+            <br><br>
+            <div id="inputsDiv">
+                <div id="inputsArea"></div>
+                <button href="#" id="submitButton" onclick="handleNoSimulate(); onSubmit()">Show Chart</button>
+                <button href="#" id="simulateButton" onclick="handleSimulate(); onSubmit()">Simulate Action</button>
+            </div>
+        </div>
+
+        <div id="warningArea"></div>
 
         <div id="answerArea"></div>
-
         <script type="text/javascript" src="processDef.js"></script>
 
+        <script type="text/javascript" src="draw.js"></script>
         <script type="text/javascript" src="finalize.js"></script>
 
         <script type="text/javascript" src="src/FCFS.js"></script>
@@ -39,6 +45,8 @@
         <script type="text/javascript" src="src/SJF-preemtive.js"></script>
         
         <script type="text/javascript" src="script.js"></script>
+
+        <script type="text/javascript" src="handlers.js"></script>
         
     </body>
 </html>

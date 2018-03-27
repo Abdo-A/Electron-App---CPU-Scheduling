@@ -15,7 +15,12 @@ function shortedJobFirstPreemtive(){
     for(i=0;;i++){
         if (completed>=numberOfProcesses.value){
             executionQueueNames+=oldCurrentProcess.name+' ';
-            executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+            //
+            if(clock-clockAtStart>oldCurrentProcess.burstTime)
+                    executionQueueDurations+=(oldCurrentProcess.burstTime).toString()+' ';
+            else
+                executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+            //
             break;
         }
 
@@ -26,11 +31,12 @@ function shortedJobFirstPreemtive(){
         if (currentProcesses.length>0) {
             currentProcess=currentProcesses[0];
             for(let i=0;i<currentProcesses.length;i++){
-                if(currentProcesses[i].burstTime<currentProcess.burstTime) {
+                if(currentProcesses[i].burstTime<currentProcess.burstTime-currentProcess.passedBurstTime) {
                     currentProcess=currentProcesses[i];
                 }
             }
         } else {
+            
             clock++;
             continue;
         }
@@ -44,7 +50,12 @@ function shortedJobFirstPreemtive(){
                 //console.log('I GOT INTO FIRST IF');
                 //oldCurrentProcess.passedBurstTime+=clock-clockAtStart;
                 executionQueueNames+=oldCurrentProcess.name+' ';
-                executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+                //
+                if(clock-clockAtStart>oldCurrentProcess.burstTime)
+                    executionQueueDurations+=(oldCurrentProcess.burstTime).toString()+' ';
+                else
+                    executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+                //
                 clockAtStart=clock;
             }
 
@@ -68,9 +79,9 @@ function shortedJobFirstPreemtive(){
             if(p[i].name===currentProcess.name){
                 p[i]=currentProcess;
             }
-            // if(p[i].name===oldCurrentProcess.name){
-            //     p[i]=oldCurrentProcess;
-            // }
+            if(p[i].name===oldCurrentProcess.name){
+                p[i]=oldCurrentProcess;
+            }
         }
 
 
@@ -78,7 +89,6 @@ function shortedJobFirstPreemtive(){
 
     }
 
-    console.log('executionQueueNames',executionQueueNames);
-    console.log('executionQueueDurations',executionQueueDurations);
+    
     finalize(p,executionQueueNames,executionQueueDurations);
 }

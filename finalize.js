@@ -12,12 +12,12 @@ function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
     averageWaitingTime=averageWaitingTime/numberOfProcesses.value;
     averageTurnAroundtime=averageTurnAroundtime/numberOfProcesses.value;
 
-    if(!executionQueueNames){
+    if(executionQueueNames===''){
         for(let i=0;i<numberOfProcesses.value;i++){
             executionQueueNames+=p[i].name+' ';
         }
     }
-    if(!executionQueueDurations){
+    if(executionQueueDurations===''){
         for(let i=0;i<numberOfProcesses.value;i++){
             executionQueueDurations+=(p[i].burstTime).toString()+' ';
         }
@@ -30,7 +30,7 @@ function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
         });
     answerArea.innerHTML='<br/>';
     for(let i=0;i<numberOfProcesses.value;i++){
-        console.log(pInOrder[i]);
+        //console.log(pInOrder[i]);
         answerArea.innerHTML+=`
         Process Name: ${pInOrder[i].name} ****
         Starts At: ${pInOrder[i].startAt} ****
@@ -43,14 +43,14 @@ function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
     answerArea.innerHTML+=`
         Average Waiting Time : ${averageWaitingTime}
         <br/> Average Turnaround Time : ${averageTurnAroundtime}
-        <br/> life${executionQueueNames}
-        <br/> life${executionQueueDurations}
+        <br/> ${executionQueueNames}
+        <br/> ${executionQueueDurations}
     `;
-    console.log('averageWaitingTime',averageWaitingTime);
-    console.log('averageTurnAroundtime',averageTurnAroundtime);
+    // console.log('averageWaitingTime',averageWaitingTime);
+    // console.log('averageTurnAroundtime',averageTurnAroundtime);
 
-    console.log(executionQueueNames);
-    console.log(executionQueueDurations);
+    // console.log(executionQueueNames);
+    // console.log(executionQueueDurations);
 
-    //draw(p,executionQueueNames,executionQueueDurations);
+    draw(p,executionQueueNames,executionQueueDurations);
 }
