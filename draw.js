@@ -112,7 +112,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
         let dancer=setInterval(()=>{
                 portions[i].style.animation="showMeSimulation 1s ease-in-out forwards";
                 i++;
-                if(i>portions.length){
+                if(i>=portions.length){
                     clearInterval(dancer);
                 }
         },1000);

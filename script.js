@@ -9,6 +9,7 @@ let simulateButton=document.getElementById('simulateButton');
 let notAnswer=document.getElementById('notAnswer');
 let averageWaitingTime=0,averageTurnAroundtime=0;
 let quantum;
+let invalidInputFlag=false, invalidNoQuantum=false;
 let simulate=false;
 let p=[];
 function onProceed(){
@@ -81,16 +82,7 @@ function onSubmit(){
             p[i]=new Process(window[`name${i}`],window[`burstTime${i}`],window[`arrivalTime${i}`]);
         }   
     }
-    if(criteria.value==='RR'){
-        try {
-            quantum=Number(document.getElementById('quantum').value);
-            warningArea.innerHTML=``;
-        } catch (e) {
-            warningArea.innerHTML=`<h2>Please Enter Quantum to achieve Round Robin!</h2>`;
-        }
-        if(!quantum) warningArea.innerHTML=`<h2>Please Enter Quantum to achieve Round Robin!</h2>`;
-    }
-
+    
     p.sort((a,b)=>{
         if(a.arrivalTime!=b.arrivalTime){
             return a.arrivalTime-b.arrivalTime;
@@ -98,32 +90,33 @@ function onSubmit(){
         else return a.burstTime-b.burstTime; //b.burstTime-a.burstTime;
         });
     p.pop(); //
-
+    console.log('P from script', p);
     //now, p that will be dealt with by the criteria functions is sorted:
     //lower arrivalTime first
     //then higher burstTime first
+
+    handleErrors();
 
     if(warningArea.innerHTML===``) {
         notAnswer.style.animation="goLeft 2s forwards";
         answerArea.style.position="absolute";
         answerArea.style.top="40vh";
         answerArea.style.left="50vw";
-    }
     
-    
+        if(criteria.value==='firstComeFirstServed'){
+            firstComeFirstServed();
+        } else if(criteria.value==='shortedJobFirst'){
+            shortedJobFirst();
+        } else if(criteria.value==='shortedJobFirstPreemtive'){
+            shortedJobFirstPreemtive();
+        } else if(criteria.value==='priority'){
+            priority();
+        } else if(criteria.value==='priorityPreemtive'){
+            priorityPreemtive();
+        } else if(criteria.value==='RR' && !!quantum){
+            RR();
+        }
 
-    if(criteria.value==='firstComeFirstServed'){
-        firstComeFirstServed();
-    } else if(criteria.value==='shortedJobFirst'){
-        shortedJobFirst();
-    } else if(criteria.value==='shortedJobFirstPreemtive'){
-        shortedJobFirstPreemtive();
-    } else if(criteria.value==='priority'){
-        priority();
-    } else if(criteria.value==='priorityPreemtive'){
-        priorityPreemtive();
-    } else if(criteria.value==='RR' && !!quantum){
-        RR();
     }
 }
 

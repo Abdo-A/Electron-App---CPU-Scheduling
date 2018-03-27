@@ -11,7 +11,6 @@ function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
 
     averageWaitingTime=averageWaitingTime/numberOfProcesses.value;
     averageTurnAroundtime=averageTurnAroundtime/numberOfProcesses.value;
-
     if(executionQueueNames===''){
         for(let i=0;i<numberOfProcesses.value;i++){
             executionQueueNames+=p[i].name+' ';
@@ -22,7 +21,9 @@ function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
             executionQueueDurations+=(p[i].burstTime).toString()+' ';
         }
     }
-
+    console.log('P from finalize', p);
+    console.log('from finalize', executionQueueNames);
+    console.log('from finalize', executionQueueDurations);
     //now, we have all processes set, and also averageWaitingTime, averageTurnAroundtime, let's draw
     pInOrder=p;
     pInOrder.sort((a,b)=>{
