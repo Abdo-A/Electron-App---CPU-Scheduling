@@ -11,8 +11,9 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
     executionQueueNames.pop();
     executionQueueDurations=executionQueueDurations.split(' ').map((one)=>{return Number(one)});
     executionQueueDurations.pop();
-    console.log('executionQueueNames',executionQueueNames);
-    console.log('executionQueueDurations',executionQueueDurations);
+    console.log('executionQueueNames from draw',executionQueueNames);
+    console.log('executionQueueDurations from draw',executionQueueDurations);
+    
     answerArea.innerHTML='';
     let haha;
     console.log(p);
@@ -40,7 +41,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
         
         if(currentProcess.firstTimeToBeExecuted) {
             if(haha!=currentProcess.startAt) {
-
+                
                 portionStyle=`opacity:0;font-size:11px;text-align:center;padding-top:25px;height:70px;width:${(currentProcess.startAt-haha)*2}rem;margin:0;position:absolute;top:50px;left:${haha*2}rem;background-color:#cccccc;border:2px solid black;opacity:0;`;
                 
                 if(i==0&&!initialGap) {
@@ -55,7 +56,6 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
                     <br/>
                     `;
                 }
-                    
                 else {
                     answerArea.innerHTML+=`
                     <div class="portion hmhm" style=${portionStyle}>
@@ -78,7 +78,6 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
                         p[i].firstTimeToBeExecuted=currentProcess.firstTimeToBeExecuted;
                     }
                 }
-
         
             portionStyle=`text-align:center;font-size:12px;padding-top:20px;height:70px;width:${executionQueueDurations[i]*2}rem;margin:0;position:absolute;top:50px;left:${haha*2}rem;background-color:#${Math.floor(100000 + Math.random() * 900000)};opacity:0`;
             
@@ -95,7 +94,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
             }
             else {
                 answerArea.innerHTML+=`
-                <div class="portion" style=${portionStyle}>
+                <div class="portion hmhm" style=${portionStyle}>
                     <span style="font-weight:800;color:white">${executionQueueNames[i]}</span>
                     <div>
                         <span style="float:right; margin-top:30px">${haha+executionQueueDurations[i]}</span>

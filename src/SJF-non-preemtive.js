@@ -3,6 +3,7 @@ function shortedJobFirst(){
     let completed=0;
     let currentProcesses,currentProcess;
     let pInOrder=[];
+
     while(1){
         if (completed>=numberOfProcesses.value){
             break;
@@ -22,9 +23,6 @@ function shortedJobFirst(){
             clock++;
             continue;
         }
-
-        //console.log('currentProcesses', currentProcesses);
-        //console.log('currentProcess', currentProcess);
         
         currentProcess.startAt=clock;
         currentProcess.finishAt=clock+currentProcess.burstTime;

@@ -62,6 +62,5 @@ for(let i=0;i<p.length;i++){
         }
     }
 
-    console.log('p from FCFS', p);
     finalize(p);
 };

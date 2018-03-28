@@ -13,7 +13,7 @@ function RR(){
     while(1){
         if (completed>=numberOfProcesses.value){
             //executionQueueNames+=p[temp].name+' ';
-            // executionQueueDurations+=(clock-clockAtStart).toString()+' ';
+            //executionQueueDurations+=(clock-clockAtStart).toString()+' ';
             break;
         }
 

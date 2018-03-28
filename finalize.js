@@ -12,11 +12,13 @@ function finalize(p=[],executionQueueNames='',executionQueueDurations=''){
     averageWaitingTime=averageWaitingTime/numberOfProcesses.value;
     averageTurnAroundtime=averageTurnAroundtime/numberOfProcesses.value;
     if(executionQueueNames===''){
+        p.sort(function(a, b){return a.startAt - b.startAt});
         for(let i=0;i<numberOfProcesses.value;i++){
             executionQueueNames+=p[i].name+' ';
         }
     }
     if(executionQueueDurations===''){
+        p.sort(function(a, b){return a.startAt - b.startAt});
         for(let i=0;i<numberOfProcesses.value;i++){
             executionQueueDurations+=(p[i].burstTime).toString()+' ';
         }

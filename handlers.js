@@ -15,8 +15,6 @@ function handleErrors(){
         if(p[i].burstTime===0){
             warningArea.innerHTML=`Burst time of a process can't be = 0!`;
             invalidInputFlag=true;
-        }else {
-            invalidInputFlag=false;
         }
     };
 
@@ -32,10 +30,14 @@ function handleErrors(){
     }
     if(invalidNoQuantum && invalidInputFlag){
         warningArea.innerHTML=`<h2>Please Enter Quantum value and Burst times to continue</h2>`;
+        invalidNoQuantum=false;
+        invalidInputFlag=false;
     } else if (invalidNoQuantum) {
         warningArea.innerHTML=`<h2>Please Enter Quantum value continue</h2>`;
+        invalidNoQuantum=false;
     } else if (invalidInputFlag) {
         warningArea.innerHTML=`<h2>Please Enter Valid Burst Times to continue</h2>`;
+        invalidInputFlag=false;
     } else {
         warningArea.innerHTML=``;
     }
