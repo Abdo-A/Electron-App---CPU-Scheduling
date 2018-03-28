@@ -38,7 +38,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
         currentProcess=p.filter((pr)=>{return pr.name===executionQueueNames[i]})[0];
         //console.log(currentProcess.startAt);
         
-        if(currentProcess.firstTimeToBeExecuted)
+        if(currentProcess.firstTimeToBeExecuted) {
             if(haha!=currentProcess.startAt) {
 
                 portionStyle=`opacity:0;font-size:11px;text-align:center;padding-top:25px;height:70px;width:${(currentProcess.startAt-haha)*2}rem;margin:0;position:absolute;top:50px;left:${haha*2}rem;background-color:#cccccc;border:2px solid black;opacity:0;`;
@@ -58,7 +58,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
                     
                 else {
                     answerArea.innerHTML+=`
-                    <div class="portion" style=${portionStyle}>
+                    <div class="portion hmhm" style=${portionStyle}>
                         <span style="font-weight:800; color:black">X</span>
                         <div>
                             <span style="float:right; margin-top:30px">${currentProcess.startAt}</span>
@@ -70,6 +70,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
                 haha-=executionQueueDurations[i-1];
                 haha=currentProcess.startAt;
             }
+        }
             
             currentProcess.firstTimeToBeExecuted=false;
                 for(let i=0;i<p.length;i++){
@@ -121,8 +122,6 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
             portions[i].style.animation="showMe 1s forwards";
         }
     }
-    
-    
 
 
 }

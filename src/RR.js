@@ -26,29 +26,32 @@ function RR(){
                     p[i].firstCycle=false;
                 }
 
-                    executionQueueNames+=p[i].name+' ';
-                    if(p[i].passedBurstTime+quantum<=p[i].burstTime) {
-                        executionQueueDurations+=quantum.toString()+' ';
-                        p[i].passedBurstTime+=quantum;
-                        clock+=quantum;
-                        if(p[i].passedBurstTime>=p[i].burstTime){
-                            p[i].finishAt=clock;
-                            p[i].completed=true;
-                            completed++;
-                        } 
-                    } else {
-                        let temp=p[i].burstTime-p[i].passedBurstTime;
-                        executionQueueDurations+=temp.toString()+' ';
-                        p[i].passedBurstTime+=temp;
-                        clock+=temp;
-                        if(p[i].passedBurstTime>=p[i].burstTime){
-                            p[i].finishAt=clock;
-                            p[i].completed=true;
-                            completed++;
-                        } 
+                executionQueueNames+=p[i].name+' ';
+                if(p[i].passedBurstTime+quantum<=p[i].burstTime) {
+                    executionQueueDurations+=quantum.toString()+' ';
+                    p[i].passedBurstTime+=quantum;
+                    clock+=quantum;
+                    if(p[i].passedBurstTime>=p[i].burstTime){
+                        p[i].finishAt=clock;
+                        p[i].completed=true;
+                        completed++;
                     } 
+                } else {
+                    let temp=p[i].burstTime-p[i].passedBurstTime;
+                    executionQueueDurations+=temp.toString()+' ';
+                    p[i].passedBurstTime+=temp;
+                    clock+=temp;
+                    if(p[i].passedBurstTime>=p[i].burstTime){
+                        p[i].finishAt=clock;
+                        p[i].completed=true;
+                        completed++;
+                    } 
+                } 
                     
                 
+            } else {
+                clock++;
+                i=i-1;
             }
             //console.log('passedbursttime for process '+i + ':' + p[i].passedBurstTime);
         }
