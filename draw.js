@@ -1,5 +1,6 @@
 function draw(p=[],executionQueueNames,executionQueueDurations){
     let portionStyle;
+    let fromToStyle;
     let currentProcess;
     let initialGap=false;
 
