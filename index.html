@@ -16,7 +16,7 @@
                 <option value="shortedJobFirstPreemtive">Shortest Job First (Preemtive)</option>
                 <option value="priority">Priority (Non-Preemtive)</option>
                 <option value="priorityPreemtive">Priority (Preemtive)</option>
-                <option value="RR">RR</option>
+                <option value="RR">Round Robin</option>
             </select>
             <br />
             <button id="proceedButton" onclick="onProceed()">Proceed</button><br><br><br>
@@ -25,16 +25,23 @@
             <div id="inputsDiv">
                 <div id="inputsArea"></div>
                 <button href="#" id="submitButton" onclick="handleNoSimulate(); onSubmit()">Show Chart</button>
-                <button href="#" id="simulateButton" onclick="handleSimulate(); onSubmit()">Simulate Action</button>
+                <button href="#" id="simulateButton" onclick="handleSimulate(); onSubmit()">Simulate Chart</button>
             </div>
         </div>
 
         <div id="warningArea"></div>
 
-        <div id="answerArea"></div>
+        <div id="answerAreas">
+            <div id="answerArea"></div>
+            <div id="infoArea"></div>
+        </div>
+
         <script type="text/javascript" src="processDef.js"></script>
 
+        <script type="text/javascript" src="drawingCoreSimulation.js"></script>
+        <script type="text/javascript" src="drawingCoreNoSimulation.js"></script>
         <script type="text/javascript" src="draw.js"></script>
+
         <script type="text/javascript" src="finalize.js"></script>
 
         <script type="text/javascript" src="src/FCFS.js"></script>

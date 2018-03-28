@@ -1,6 +1,8 @@
 let body=document.querySelector('body');
 let inputsArea=document.getElementById('inputsArea');
+let answerAreas=document.getElementById('answerAreas');
 let answerArea=document.getElementById('answerArea');
+let infoArea=document.getElementById('infoArea');
 let warningArea=document.getElementById('warningArea');
 let numberOfProcesses=document.getElementById('numberOfProcesses');
 let criteria=document.getElementById('criteria');
@@ -16,6 +18,7 @@ function onProceed(){
     if(numberOfProcesses.value>0) {
         inputsArea.innerHTML=''; //
         answerArea.innerHTML='';
+        infoArea.innerHTML='';
         submitButton.style.display="inline-block";
         simulateButton.style.display="inline-block";
         if(criteria.value==='priority' || criteria.value==='priorityPreemtive') {
@@ -99,9 +102,9 @@ function onSubmit(){
 
     if(warningArea.innerHTML===``) {
         notAnswer.style.animation="goLeft 2s forwards";
-        answerArea.style.position="absolute";
-        answerArea.style.top="40vh";
-        answerArea.style.left="50vw";
+        answerAreas.style.position="absolute";
+        answerAreas.style.top="40vh";
+        answerAreas.style.left="50vw";
     
         if(criteria.value==='firstComeFirstServed'){
             firstComeFirstServed();

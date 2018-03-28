@@ -72,8 +72,14 @@ button {
     width:200px
 }
 
-#answerArea {
-    margin-left: -10vw
+#answerAreas {
+    margin-left: -5vw;
+    margin-top: -30vh;
+}
+
+#infoArea {
+    opacity: 0;
+    margin-top: 10vh;
 }
 
 

@@ -4,16 +4,21 @@ function handleKeyUp(){
 
 function handleSimulate(){
     simulate=true;
+    answerArea.innerHTML=``;
+    infoArea.innerHTML=``;
 }
 
 function handleNoSimulate(){
     simulate=false;
+    answerArea.innerHTML=``;
+    infoArea.innerHTML=``;
 }
 
 function handleErrors(){
     for(let i=0;i<p.length;i++){
-        if(p[i].burstTime===0){
-            warningArea.innerHTML=`Burst time of a process can't be = 0!`;
+        if(p[i].burstTime<=0){
+            invalidInputFlag=true;
+        } else if(p[i].arrivalTime<0){
             invalidInputFlag=true;
         }
     };
@@ -36,7 +41,7 @@ function handleErrors(){
         warningArea.innerHTML=`<h2>Please Enter Quantum value continue</h2>`;
         invalidNoQuantum=false;
     } else if (invalidInputFlag) {
-        warningArea.innerHTML=`<h2>Please Enter Valid Burst Times to continue</h2>`;
+        warningArea.innerHTML=`<h2>Please Enter Valid Burst/Arrival Times to continue</h2>`;
         invalidInputFlag=false;
     } else {
         warningArea.innerHTML=``;
