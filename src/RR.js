@@ -2,6 +2,7 @@ function RR(){
     let clock=p[0].arrivalTime;
     let completed=0;
     let temp;
+    let flag;
     let executionQueueNames='';
     let executionQueueDurations='';
 
@@ -50,8 +51,19 @@ function RR(){
                     
                 
             } else {
-                clock++;
-                i=i-1;
+                for(let j=0;j<numberOfProcesses.value;j++){
+                    if(!p[j].completed==true && p[j].arrivalTime<=clock){
+                        flag=j;
+                    }
+                }
+                if(flag>0){
+                    i=flag-1;
+                    flag=0;
+                } else {
+                    clock++;
+                }
+                
+                //i=i-1;
             }
             //console.log('passedbursttime for process '+i + ':' + p[i].passedBurstTime);
         }
