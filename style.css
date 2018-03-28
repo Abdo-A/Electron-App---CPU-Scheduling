@@ -72,8 +72,9 @@ button {
     width:200px
 }
 
+
 #answerAreas {
-    margin-left: -5vw;
+    margin-left: 5vw;
     margin-top: -30vh;
 }
 
@@ -85,7 +86,7 @@ button {
 
 @keyframes goLeft {
     100% {
-        margin-left:-45vw;
+        margin-left:-40vw;
     }
 }
 
