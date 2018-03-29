@@ -78,6 +78,12 @@ button {
     margin-top: -30vh;
 }
 
+@media (max-width: 600px) {
+    #answerAreas {
+        margin-left: 40px;
+    }
+}
+
 #infoArea {
     opacity: 0;
     margin-top: 10vh;
