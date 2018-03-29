@@ -2,15 +2,14 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
     let portionStyle;
     let fromToStyle;
     let currentProcess;
-    let initialGap=false;
 
     answerArea.innerHTML=``;
     infoArea.innerHTML=``;
 
     for(let i=0;i<p.length;i++){
-        infoArea.innerHTML+=`<h3 style="border:2px solid black;display:inline-block;padding:3px;">${p[i].name}</h3> <b>Waiting time:</b> ${p[i].waitingTime}, <b>Turnaround Time:</b> ${p[i].turnAroundTime} </br>`;
+        infoArea.innerHTML+=`<h3 style="border:2px solid black;display:inline-block;padding:3px;">${p[i].name}</h3> <b>Waiting time:</b> ${p[i].waitingTime}, <b>Turnaround time:</b> ${p[i].turnAroundTime} </br>`;
     }
-    infoArea.innerHTML+=`<b>Average Waiting time:</b> ${averageWaitingTime}</br><b>Average Turnaround Time:</b> ${averageTurnAroundtime} </br>`;
+    infoArea.innerHTML+=`<b>Average waiting time:</b> ${averageWaitingTime}</br><b>Average turnaround time:</b> ${averageTurnAroundtime} </br>`;
 
     let portions=document.getElementsByClassName('portion');
     
@@ -18,6 +17,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
         drawingCoreSimulation(executionQueueNames,executionQueueDurations);
         let i=0;
         submitButton.disabled=true;
+        //simulateButton.disabled=true;
         let dancer=setInterval(()=>{
                 portions[i].style.animation="showMeSimulation 1s ease-in-out forwards";
                 i++;
@@ -30,6 +30,7 @@ function draw(p=[],executionQueueNames,executionQueueDurations){
 
         setTimeout(()=>{
             submitButton.disabled=false;
+            //simulateButton.disabled=false;
         },simulationTime);
 
     } else {

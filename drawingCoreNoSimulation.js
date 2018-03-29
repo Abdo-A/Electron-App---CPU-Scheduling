@@ -1,5 +1,7 @@
 function drawingCoreNoSimulation(executionQueueNames,executionQueueDurations){
 
+    let initialGap=false;
+    
     for(let i=0;i<p.length;i++){
         p[i].firstTimeToBeExecuted=true;
     }

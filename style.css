@@ -22,7 +22,7 @@ body {
 
 #notAnswer {
     margin-top: 60px;
-    
+    margin-left: 12vw
 }
 
 #header {
@@ -74,7 +74,7 @@ button {
 
 
 #answerAreas {
-    margin-left: 5vw;
+    margin-left: 0vw;
     margin-top: -30vh;
 }
 
@@ -86,7 +86,7 @@ button {
 
 @keyframes goLeft {
     100% {
-        margin-left:-40vw;
+        margin-left:-35vw;
     }
 }
 

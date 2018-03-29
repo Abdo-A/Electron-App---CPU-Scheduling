@@ -47,3 +47,27 @@ function handleErrors(){
         warningArea.innerHTML=``;
     }
 }
+
+function changeSelectToFCFS(){
+    criteria.selectedIndex = 0;
+}
+
+function changeSelectToSJF(){
+    criteria.selectedIndex = 1;
+}
+
+function changeSelectToSJFpre(){
+    criteria.selectedIndex = 2;
+}
+
+function changeSelectToPriority(){
+    criteria.selectedIndex = 3;
+}
+
+function changeSelectToPrioritypre(){
+    criteria.selectedIndex = 4;
+}
+
+function changeSelectToRR(){
+    criteria.selectedIndex = 5;
+}
