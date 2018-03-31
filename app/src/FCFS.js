@@ -40,15 +40,21 @@ for(let i=0;i<p.length;i++){
         currentProcesses=p.filter((pr)=>{
             return pr.arrivalTime<=clock && pr.completed===false;
         });
-        console.log('currentProcesses from FCFS',currentProcesses);
+        //console.log('currentProcesses from FCFS',currentProcesses);
         if(currentProcesses.length===0) {clock++; continue;}
+
         currentProcess=currentProcesses[0];
         for(let i=0;i<currentProcesses.length;i++){
-            if (currentProcesses[i].burstTime<currentProcess.burstTime){
+            if (currentProcesses[i].arrivalTime<currentProcess.arrivalTime){
                 currentProcess=currentProcesses[i];
             }
         }
-        console.log('currentProcess from FCFS',currentProcess);
+        for(let i=0;i<currentProcesses.length;i++){
+            if (currentProcesses[i].arrivalTime===currentProcess.arrivalTime&&currentProcesses[i].burstTime<currentProcess.burstTime){
+                currentProcess=currentProcesses[i];
+            }
+        }
+        //console.log('currentProcess from FCFS',currentProcess);
         currentProcess.startAt=clock;
         currentProcess.finishAt=clock+currentProcess.burstTime;
         currentProcess.completed=true;
