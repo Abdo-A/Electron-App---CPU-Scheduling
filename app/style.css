@@ -21,7 +21,7 @@ body {
 }
 
 #notAnswer {
-    margin-top: 100px;
+    margin-top: 60px;
     margin-left: 12vw
 }
 
@@ -76,6 +76,7 @@ button {
 #answerAreas {
     margin-left: 0vw;
     margin-top: -30vh;
+    margin-bottom: -20vh;
 }
 
 @media (max-width: 600px) {
