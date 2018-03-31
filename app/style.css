@@ -37,6 +37,11 @@ input, select {
     border: none
 }
 
+.nameInput {
+    width: 100px;
+    border-radius: 5px;
+}
+
 #numberOfProcesses {
     width:200px;
     height: 40px;
@@ -70,6 +75,20 @@ button {
 #submitButton, #simulateButton {
     display: none;
     width:200px
+}
+
+#namesDiv {
+    text-align: left;
+}
+
+#namesButton {
+    display: none;
+    width: 200px;
+    border-radius: 5px;
+    background-color: #28b485;
+    position: absolute;
+    left:5vw;
+    top:85vh;
 }
 
 
