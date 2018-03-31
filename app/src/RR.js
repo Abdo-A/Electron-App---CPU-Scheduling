@@ -51,10 +51,15 @@ function RR(){
                     
                 
             } else {
-                for(let j=0;j<numberOfProcesses.value;j++){
+                counter=0;
+                for(let j=i;counter<numberOfProcesses.value;counter++){
+                    j=j%numberOfProcesses.value;
+                    console.log('j is', j);
                     if(!p[j].completed==true && p[j].arrivalTime<=clock){
                         flag=j;
+                        break;
                     }
+                    j++;
                 }
                 if(flag>0){
                     i=flag-1;
