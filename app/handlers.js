@@ -14,10 +14,21 @@ function handleNoSimulate(){
     infoArea.innerHTML=``;
 }
 
+let hiddenFlag=true;
+
 function handleChangeNames(){
-    for(let i=1;i<=numberOfProcesses.value;i++){
-        document.getElementById(`name${i}`).setAttribute('type', 'text');
+    if(hiddenFlag){
+        for(let i=1;i<=numberOfProcesses.value;i++){
+            document.getElementById(`name${i}`).setAttribute('type', 'text');
+        }
+        hiddenFlag=false;
+    } else {
+        for(let i=1;i<=numberOfProcesses.value;i++){
+            document.getElementById(`name${i}`).setAttribute('type', 'hidden');
+        }
+        hiddenFlag=true;
     }
+    
 }
 
 function handleErrors(){
