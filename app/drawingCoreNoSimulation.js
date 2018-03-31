@@ -20,7 +20,7 @@ function drawingCoreNoSimulation(executionQueueNames,executionQueueDurations){
         portionStyle=`opacity:0;font-size:11px;text-align:center;padding-top:25px;height:70px;width:${haha*2}rem;margin:0;position:absolute;top:50px;left:0;background-color:#cccccc;border:2px solid black;opacity:0;`;
         answerArea.innerHTML+=`
         <div class="portion" style=${portionStyle}>
-            <span style="font-weight:800; color:black">X</span>
+            <span style="font-weight:800; color:black">Idle</span>
             <div>
                 <span style="float:left; margin-top:30px">0</span>
                 <span style="float:right; margin-top:30px">${haha}</span>
@@ -43,7 +43,7 @@ function drawingCoreNoSimulation(executionQueueNames,executionQueueDurations){
                 if(i==0&&!initialGap) {
                     answerArea.innerHTML+=`
                     <div class="portion" style=${portionStyle}>
-                        <span style="font-weight:800; color:black">X</span>
+                        <span style="font-weight:800; color:black">Idle</span>
                         <div>
                             <span style="float:left; margin-top:30px">${haha-executionQueueDurations[i-1]}</span>
                             <span style="float:right; margin-top:30px">${currentProcess.startAt}</span>
@@ -55,7 +55,7 @@ function drawingCoreNoSimulation(executionQueueNames,executionQueueDurations){
                 else {
                     answerArea.innerHTML+=`
                     <div class="portion hmhm" style=${portionStyle}>
-                        <span style="font-weight:800; color:black">X</span>
+                        <span style="font-weight:800; color:black">Idle</span>
                         <div>
                             <span style="float:right; margin-top:30px">${currentProcess.startAt}</span>
                         </div>
