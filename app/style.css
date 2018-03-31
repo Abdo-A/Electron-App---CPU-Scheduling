@@ -88,7 +88,7 @@ button {
     background-color: #28b485;
     position: absolute;
     left:5vw;
-    top:85vh;
+    top:95vh;
 }
 
 
@@ -106,7 +106,7 @@ button {
 
 #infoArea {
     opacity: 0;
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 
