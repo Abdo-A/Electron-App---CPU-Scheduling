@@ -14,6 +14,12 @@ function handleNoSimulate(){
     infoArea.innerHTML=``;
 }
 
+function handleChangeNames(){
+    for(let i=1;i<=numberOfProcesses.value;i++){
+        document.getElementById(`name${i}`).setAttribute('type', 'text');
+    }
+}
+
 function handleErrors(){
     for(let i=0;i<p.length;i++){
         if(p[i].burstTime<=0){
