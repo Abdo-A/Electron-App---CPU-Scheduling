@@ -24,7 +24,7 @@ function drawingCoreSimulation(executionQueueNames,executionQueueDurations){
 
         answerArea.innerHTML+=`
         <div class="portion" style=${portionStyle}>
-            <span style="font-weight:800; color:black">X<br/><span style=${fromToStyle}>0 to ${haha}</span></span>
+            <span style="font-weight:800; color:black">Idle<br/><span style=${fromToStyle}>0 to ${haha}</span></span>
         </div>
         <br/>
         `;
@@ -46,7 +46,7 @@ function drawingCoreSimulation(executionQueueNames,executionQueueDurations){
                 if(i==0&&!initialGap) {
                     answerArea.innerHTML+=`
                     <div class="portion" style=${portionStyle}>
-                        <span style="font-weight:800; color:black">X<br/><span style=${fromToStyle}>${haha-executionQueueDurations[i-1]} to ${currentProcess.startAt}</span></span>
+                        <span style="font-weight:800; color:black">Idle<br/><span style=${fromToStyle}>${haha-executionQueueDurations[i-1]} to ${currentProcess.startAt}</span></span>
                     </div>
                     <br/>
                     `;
@@ -54,7 +54,7 @@ function drawingCoreSimulation(executionQueueNames,executionQueueDurations){
                 else {
                     answerArea.innerHTML+=`
                     <div class="portion hmhm" style=${portionStyle}>
-                        <span style="font-weight:800; color:black">X<br/><span style=${fromToStyle}>${haha-executionQueueDurations[i-1]} to ${currentProcess.startAt}</span></span>
+                        <span style="font-weight:800; color:black">Idle<br/><span style=${fromToStyle}>${haha-executionQueueDurations[i-1]} to ${currentProcess.startAt}</span></span>
                     </div>
                     <br/>
                     `;
